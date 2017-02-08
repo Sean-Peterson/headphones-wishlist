@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Headphone Wishlist</title>
+    </head>
+    <body>
+        <h1>Your Wishlist for Headphones</h1>
+        {% if headphones is not empty %}
+            <p>Here is your headphone wishlist:</p>
+            {% for headphone in headphones %}
+                <p>{{headphone.getBrand}}</p>
+                <ul>
+                        <li>{{headphone.getModel}}</li>
+                        <li>${{headphone.getPrice}}</li>
+                </ul>
+            {% endfor %}
+        {% endif %}
+        <form action="/add_headphones" method="post">
+            <label for="brand">Headphone brand</label>
+            <input id="brand "type="text" name="brand">
+            <label for="model">Headphone model</label>
+            <input id="model "type="text" name="model">
+            <label for="price">Headphone price</label>
+            <input id="price "type="text" name="price">
+            <button type="submit" class="btn">Submit</button>
+        </form>
+        <form action='/delete' method='post'>
+            <button type='submit' class='btn'>Delete all</button>
+        </form>
+    </body>
+</html>
